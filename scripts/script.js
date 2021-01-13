@@ -1,3 +1,7 @@
+// const url = `postgres://jmlgolwz:d4MIUHaRtLOl2sl91VDOdkGbf5xlA-Hk@john.db.elephantsql.com:5432/jmlgolwz`
+// fetch(url)
+// .then(function())
+
 let NumOfTrackers = 0;
 
 //need a i=0 or smt then can + - the div when delete?
@@ -32,3 +36,5 @@ function add() {
     // .removeChild()   ??? am i supposed to appendchild tho um
     // get numoftrackers and then -- at end i think
   }
+
+
