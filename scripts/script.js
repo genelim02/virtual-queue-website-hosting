@@ -3,14 +3,14 @@
 // .then(function())
 
 let NumOfTrackers = 0;
-
+let addbutton = document.getElementById('addbutton')
 //need a i=0 or smt then can + - the div when delete?
 function add() {
     //create div try add inside
     var div = document.createElement("Div");
     div.setAttribute("class","trackbox");
-
-    var companyid = document.createElement("P");
+    //need put into rows
+    var companyid = document.createElement("span");
     companyid.innerHTML="CompanyID :"
     companyid.setAttribute("class","companyid");
 
@@ -23,11 +23,36 @@ function add() {
     x.setAttribute("type", "button");
     x.setAttribute("value","X");
     x.setAttribute("onclick","removeq()");
+    x.setAttribute("class","x");    //flex end? make another div?
 
-    document.getElementById("addtracker").appendChild(div);
+    //search button
+    var search = document.createElement("input");
+    search.setAttribute("type", "button");
+    search.setAttribute("value", "Search");
+    search.setAttribute("Class","search");
+    search.setAttribute("onclick","searchCompany()");
+
+    //line break idk
+    var linebreak = document.createElement("br");
+
+    var queueid = document.createElement("span");
+    queueid.innerHTML="QueueID :"
+    queueid.setAttribute("class","queueid");
+
+    //dropdown divcontainer>buton>dropdowndiv>a
+
+    //tickbox
+    var check = document.createElement("input");
+    check.setAttribute("type", "checkbox");
+
+    document.getElementById("addtracker").insertBefore( div, addbutton);
     document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(x);
     document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(companyid);
     document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(input);
+    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(search);
+    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(linebreak);
+    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(queueid);
+    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(check);
 
     NumOfTrackers++;
     

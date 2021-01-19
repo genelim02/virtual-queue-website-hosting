@@ -1,13 +1,36 @@
-body{
+/* body{
+    
+} */
+.trackbox{
+    background-color: rgb(191, 235, 241);
+    transition: 0.3s;
+    /* display: flex; */
+    border: black;
+    border-width: 3px;
+    border-style: solid;
+    padding: 2%;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    text-align: center;
+}
+#addbutton{
+    border: black;
+    border-width: 3px;
+    border-style: solid;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+#addbutton:hover{
+    background-color: rgb(151, 206, 206);
+}
+#addtracker{
     width: 100%;
     /* display: flex; */
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-.trackbox{
-    background-color: rosybrown;
-}
-
 /* .add{
     display: inline-block;
     background-color: red;
@@ -16,8 +39,4 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
-} */
-/* #addbutton{
-    align-items: center;
-    justify-content: center;
 } */
