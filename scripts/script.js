@@ -3,9 +3,10 @@
 // .then(function())
 
 let NumOfTrackers = 0;
-let addbutton = document.getElementById('addbutton')
+// let addbutton = document.getElementById('addbutton');
 //need a i=0 or smt then can + - the div when delete?
 function add() {
+  let addbutton = document.getElementById('addbutton');
     //create div try add inside
     var div = document.createElement("Div");
     div.setAttribute("class","trackbox");
@@ -45,14 +46,16 @@ function add() {
     var check = document.createElement("input");
     check.setAttribute("type", "checkbox");
 
-    document.getElementById("addtracker").insertBefore( div, addbutton);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(x);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(companyid);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(input);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(search);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(linebreak);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(queueid);
-    document.getElementsByClassName("trackbox")[NumOfTrackers].appendChild(check);
+    // document.getElementById("addtracker").insertBefore( div, addbutton);
+    addbutton.parentNode.insertBefore(div, addbutton);
+    const tracker = document.getElementsByClassName("trackbox")[NumOfTrackers]
+    tracker.appendChild(x);
+    tracker.appendChild(companyid);
+    tracker.appendChild(input);
+    tracker.appendChild(search);
+    tracker.appendChild(linebreak);
+    tracker.appendChild(queueid);
+    tracker.appendChild(check);
 
     NumOfTrackers++;
     

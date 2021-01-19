@@ -13,11 +13,12 @@
     justify-content: center;
     margin: auto;
     text-align: center;
+    width: 88%;
 }
 #addbutton{
     border: black;
     border-width: 3px;
-    border-style: solid;
+    border-style: dashed;
     align-items: center;
     justify-content: center;
     text-align: center;
