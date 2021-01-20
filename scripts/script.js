@@ -63,6 +63,7 @@ function add() {
   function removeq(){
     // .removeChild()   ??? am i supposed to appendchild tho um
     // get numoftrackers and then -- at end i think
+    
   }
 
 
