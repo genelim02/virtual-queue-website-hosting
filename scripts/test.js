@@ -3,10 +3,10 @@ function add(){
     let trackbox = `
     <div class="trackbox">
       <button class="x" onclick="removeq()">X</button>
-      <form action="get">
+      <form name="addQueue" action="get">
         <label for="companyid">Company ID :</label>
-        <input type="text" class="companyid">
-        <button type="submit">Search</button>
+        <input type="text" class='companyid' >
+        <button type="button" onclick='getq()' class='companyidbutton'>Search</button>
         <br>        
       </form>
 
@@ -33,9 +33,11 @@ function removeq(){
   $("#addtracker").delegate(".x", "click", function () {
     $(this).closest('.trackbox').remove();
   });
+  
   //nvm it works now haha
 }
 
+<<<<<<< HEAD
 // function showInactive () {
 //   // Get the checkbox
 //   var checkBox = document.getElementById("hide");
@@ -62,3 +64,30 @@ function removeq(){
 //   });
 //   }
 // }
+=======
+function validateForm() {
+  var a = document.forms["addQueue"]["companyid"].value;  
+  
+  if (a == ""){
+      alert("company id cannot be blank");
+      return false
+  }
+}
+
+    
+function getq(){
+$(".companyidbutton").click(function(){
+  let compid = $(this).siblings("input").val();
+  const url = "http://localhost:8080"
+  fetch(`${url}/company/queue?company_id=`+compid)
+    .then(function(response){
+      var response = response.json()
+      .then(function(json){
+        console.log(json)
+      })
+    })
+});
+//fetch(`${host}/company/queue?company_id=`+compid);
+// port 8080 for company  port 3000 for customer
+}
+>>>>>>> 9d3f7810eec12c257244e6ee54f39a16b41bc794
