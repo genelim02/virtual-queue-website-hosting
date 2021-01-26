@@ -3,7 +3,7 @@ function add(){
     let trackbox = `
     <div class="trackbox">
       <button class="x" onclick="removeq()">X</button>
-      <form name="addQueue" action="get" onsubmit="return backendTester()">
+      <form name="addQueue" action="get">
         <label for="companyid">Company ID :</label>
         <input type="text" class='companyid' >
         <button type="button" onclick='getq()' class='companyidbutton'>Search</button>
@@ -44,20 +44,14 @@ function validateForm() {
   }
 }
 
-function backendTester() {
-  const url = "localhost:8080"
-  fetch(url)
-    .then(function(response){
-
-    })
     
 function getq(){
 $(".companyidbutton").click(function(){
   let compid = $(this).siblings("input").val();
-  const url = "localhost:8080"
+  const url = "http://localhost:8080"
   fetch(`${url}/company/queue?company_id=`+compid)
     .then(function(response){
-      console.log(response)
+      console.log(response.data)
     })
 });
 //fetch(`${host}/company/queue?company_id=`+compid);
