@@ -3,7 +3,7 @@ function add(){
     let trackbox = `
     <div class="trackbox">
       <button class="x" onclick="removeq()">X</button>
-      <form action="get">
+      <form name="addQueue" action="get" onsubmit="return backendTester()">
         <label for="companyid">Company ID :</label>
         <input type="text" class="companyid">
         <button type="submit">Search</button>
@@ -32,4 +32,21 @@ function removeq(){
     $(this).closest('.trackbox').remove();
   });
   //nvm it works now haha
+}
+
+function validateForm() {
+  var a = document.forms["addQueue"]["companyid"].value;  
+  
+  if (a == ""){
+      alert("company id cannot be blank");
+      return false
+  }
+}
+
+function backendTester() {
+  const url = "localhost:8080"
+  fetch(url)
+    .then(function(response){
+
+    })
 }
