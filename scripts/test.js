@@ -25,14 +25,11 @@ function add(){
 
 //x is the X button uk close yeah 
 function removeq(){
-  //$(this).parent().remove()
-  //$(this).closest('.trackbox').remove()  //excuse me?
-  //console.log('DELETE LISTING PLEASE WORK') //???? the console.log goes thru but the thing doesnt delete wtf
+  
   $("#addtracker").delegate(".x", "click", function () {
     $(this).closest('.trackbox').remove();
   });
   
-  //nvm it works now haha
 }
 
 function getq(){
