@@ -42,18 +42,31 @@ function validateForm() {
 }
 
     
-function getq(){
-$(".companyidbutton").click(function(){
-  let compid = $(this).siblings("input").val();
-  const url = "http://localhost:8080"
-  fetch(`${url}/company/queue?company_id=`+compid)
-    .then(function(response){
-      var response = response.json()
-      .then(function(json){
-        console.log(json)
-      })
-    })
-});
+// function getq(){
+// $(".companyidbutton").click(function(){
+//   let compid = $(this).siblings("input").val();
+//   const url = "http://localhost:8080"
+//   fetch(`${url}/company/queue?company_id=`+compid)
+//     .then(function(response){
+//       var response = response.json()
+//       .then(function(json){
+//         console.log(json)
+//       })
+//     })
+// });
 //fetch(`${host}/company/queue?company_id=`+compid);
 // port 8080 for company  port 3000 for customer
-}
+//}
+
+// var compid;
+// const url = "http://localhost:8080";
+// function getq(){
+//     compid = $(this).siblings("input").val();
+//     fetch(`${url}/company/queue?company_id=`+compid)
+//       .then(function(response){
+//         var response = response.json()
+//         .then(function(json){
+//           console.log(json)
+//         })
+//       });
+// }
