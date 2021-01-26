@@ -48,7 +48,10 @@ $(".companyidbutton").click(function(){
   const url = "http://localhost:8080"
   fetch(`${url}/company/queue?company_id=`+compid)
     .then(function(response){
-      console.log(response.data)
+      var response = response.json()
+      .then(function(json){
+        console.log(json)
+      })
     })
 });
 //fetch(`${host}/company/queue?company_id=`+compid);
