@@ -15,7 +15,7 @@ function add(){
         <option value="1">extracted queue id appears here</option>
       </select>
 
-      // Hide by default
+
       <input type="checkbox" name="hide" id="hide" class="hide" onclick="showInactive" checked>
       <label for="hide">Hide Inactive</label>
       
@@ -37,7 +37,6 @@ function removeq(){
   //nvm it works now haha
 }
 
-<<<<<<< HEAD
 // function showInactive () {
 //   // Get the checkbox
 //   var checkBox = document.getElementById("hide");
@@ -64,7 +63,6 @@ function removeq(){
 //   });
 //   }
 // }
-=======
 function validateForm() {
   var a = document.forms["addQueue"]["companyid"].value;  
   
@@ -73,7 +71,6 @@ function validateForm() {
       return false
   }
 }
-
     
 function getq(){
 $(".companyidbutton").click(function(){
@@ -90,4 +87,3 @@ $(".companyidbutton").click(function(){
 //fetch(`${host}/company/queue?company_id=`+compid);
 // port 8080 for company  port 3000 for customer
 }
->>>>>>> 9d3f7810eec12c257244e6ee54f39a16b41bc794
