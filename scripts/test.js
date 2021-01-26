@@ -26,13 +26,13 @@ function add(){
 }
 
 //x is the X button uk close yeah 
+
 function removeq(){
-  
-  $("#addtracker").delegate(".x", "click", function () {
+  $("#addtracker").on("click", ".x",  function () {
     $(this).closest('.trackbox').remove();
+    //console.log('x is pressed')
   });
-  
-}
+} 
 
 // function showInactive () {
 //   // Get the checkbox
@@ -85,9 +85,23 @@ function validateForm() {
 // port 8080 for company  port 3000 for customer
 //}
 
-// var compid;
-// const url = "http://localhost:8080";
-// function getq(){
+var compid;
+const url = "http://localhost:8080";
+function getq(){
+  $(".companyidbutton").click(function(){
+    compid = $(this).siblings("input").val();
+    fetch(`${url}/company/queue?company_id=`+compid)
+      .then(function(response){
+        var response = response.json()
+        .then(function(json){
+          console.log(json)
+        })
+      });
+      stopPropagation(); 
+    });
+};
+
+// $(".trackbox").once()..on("click", ".companyid",  function () {
 //     compid = $(this).siblings("input").val();
 //     fetch(`${url}/company/queue?company_id=`+compid)
 //       .then(function(response){
@@ -96,4 +110,4 @@ function validateForm() {
 //           console.log(json)
 //         })
 //       });
-// }
+// });
