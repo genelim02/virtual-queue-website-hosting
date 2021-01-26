@@ -15,8 +15,10 @@ function add(){
         <option value="1">extracted queue id appears here</option>
       </select>
 
+      // Hide by default
+      <input type="checkbox" name="hide" id="hide" class="hide" onclick="showInactive" checked>
       <label for="hide">Hide Inactive</label>
-      <input type="checkbox" name="hide" class="hide">
+      
     </div>
     `
     document.getElementById("addbutton").insertAdjacentHTML("beforebegin",  trackbox);
@@ -33,3 +35,30 @@ function removeq(){
   });
   //nvm it works now haha
 }
+
+// function showInactive () {
+//   // Get the checkbox
+//   var checkBox = document.getElementById("hide");
+//   if (checkBox.checked == true) {
+//     $(document).ready(function () {
+//       $('#bt').click(function () {
+
+//           $.getJSON(url, function (data) {
+//               $.each(data, function (index, value) {
+//                   if (is_active == 1) {
+//                     $('#sel').append('<option value="' + value.ID + '">' + value.Name + '</option>');
+//                   }else {
+//                     display = "none";
+//                   }
+                  
+//               });
+//           });
+//       });
+
+//       // SHOW SELECTED VALUE.
+//       $('#sel').change(function () {
+//           $('#msg').text('Selected Item: ' + this.options[this.selectedIndex].text);
+//       });
+//   });
+//   }
+// }
