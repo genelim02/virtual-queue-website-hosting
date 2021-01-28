@@ -6,7 +6,7 @@ function add(){
       <form name="addQueue" action="get">
         <label for="companyid">Company ID :</label>
         <input type="text" class='companyid' >
-        <button type="button" onclick='getq()' class='companyidbutton'>Search</button>
+        <button type="button" id='submit' class='companyidbutton' onclick="getq()">Search</button>
         <br>        
       </form>
 
@@ -31,8 +31,6 @@ function removeq(){
   $("#addtracker").delegate(".x", "click", function () {
     $(this).closest('.trackbox').remove();
   });
-  
-  //nvm it works now haha
 }
 
 function validateForm() {
@@ -46,15 +44,16 @@ function validateForm() {
 
     
 function getq(){
-$(".companyidbutton").click(function(){
   let compid = $(this).siblings("input").val();
   const url = "http://localhost:8080"
   fetch(`${url}/company/queue?company_id=`+compid)
     .then(function(response){
-      var response = response.json()
+      var data = response.json()
       .then(function(json){
         console.log(json)
-      })
+        for(i=0;i<json.length;i++){
+          var row = json[i]
+        }
     })
 });
 //fetch(`${host}/company/queue?company_id=`+compid);
