@@ -95,9 +95,25 @@ function getq(number){
         var response = response.json()
         .then(function(json){
           console.log(json); //this is working normally
+          //putting the array into the select
+          let dropdown = document.getElementById("QueueSelect"+number);
+          let options = "";
+          for (let i = 0; i < json.length; i++) {
+            const queue = json[i];
+            const queueId = queue.queue_id;
+            const active = queue.is_active;
+            if (active == 0) {
+                option = `<option class='inactive'>` + queueId + `</option>`;
+            } else {
+                option = `<option>` + queueId + `</option>`;
+            }
+            options += option;
+          }
+          dropdown.innerHTML = options;
         });
       });
 }
+
 
 // hi i copied this over from test.js before deleting it made no changes. - jamie
 // function showInactive () {
