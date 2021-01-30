@@ -15,8 +15,10 @@ function add(){
         <option value="1">extracted queue id appears here</option>
       </select>
 
+
+      <input type="checkbox" name="hide" id="hide" class="hide" onclick="showInactive" checked>
       <label for="hide">Hide Inactive</label>
-      <input type="checkbox" name="hide" class="hide">
+      
     </div>
     `
     document.getElementById("addbutton").insertAdjacentHTML("beforebegin",  trackbox);
@@ -24,15 +26,40 @@ function add(){
 }
 
 //x is the X button uk close yeah 
-function removeq(){
-  //$(this).parent().remove()
-  //$(this).closest('.trackbox').remove()  //excuse me?
-  //console.log('DELETE LISTING PLEASE WORK') //???? the console.log goes thru but the thing doesnt delete wtf
-  $("#addtracker").delegate(".x", "click", function () {
-    $(this).closest('.trackbox').remove();
-  });
-}
 
+function removeq(){
+  $("#addtracker").on("click", ".x",  function () {
+    $(this).closest('.trackbox').remove();
+    //console.log('x is pressed')
+  });
+} 
+
+// function showInactive () {
+//   // Get the checkbox
+//   var checkBox = document.getElementById("hide");
+//   if (checkBox.checked == true) {
+//     $(document).ready(function () {
+//       $('#bt').click(function () {
+
+//           $.getJSON(url, function (data) {
+//               $.each(data, function (index, value) {
+//                   if (is_active == 1) {
+//                     $('#sel').append('<option value="' + value.ID + '">' + value.Name + '</option>');
+//                   }else {
+//                     display = "none";
+//                   }
+                  
+//               });
+//           });
+//       });
+
+//       // SHOW SELECTED VALUE.
+//       $('#sel').change(function () {
+//           $('#msg').text('Selected Item: ' + this.options[this.selectedIndex].text);
+//       });
+//   });
+//   }
+// }
 function validateForm() {
   var a = document.forms["addQueue"]["companyid"].value;  
   
@@ -41,21 +68,63 @@ function validateForm() {
       return false
   }
 }
-
     
-function getq(){
-  let compid = $(this).siblings("input").val();
-  const url = "http://localhost:8080"
-  fetch(`${url}/company/queue?company_id=`+compid)
-    .then(function(response){
-      var data = response.json()
-      .then(function(json){
-        console.log(json)
-        for(i=0;i<json.length;i++){
-          var row = json[i]
-        }
-    })
-});
+// function getq(){
+//   let compid = $(this).siblings("input").val();
+//   const url = "http://localhost:8080"
+//   fetch(`${url}/company/queue?company_id=`+compid)
+//     .then(function(response){
+//       var data = response.json()
+//       .then(function(json){
+//         console.log(json)
+//         for(i=0;i<json.length;i++){
+//           var row = json[i]
+//         }
+//     })
+// });
+// }
+// function getq(){
+// $(".companyidbutton").click(function(){
+//   let compid = $(this).siblings("input").val();
+//   const url = "http://localhost:8080"
+//   fetch(`${url}/company/queue?company_id=`+compid)
+//     .then(function(response){
+//       var response = response.json()
+//       .then(function(json){
+//         console.log(json)
+//       })
+//     })
+// });
 //fetch(`${host}/company/queue?company_id=`+compid);
 // port 8080 for company  port 3000 for customer
-}
+//}
+
+var compid;
+const url = "http://localhost:8080";
+function getq(){
+  $(".companyidbutton").click(function(event){
+    compid = $(this).siblings("input").val();
+    fetch(`${url}/company/queue?company_id=`+compid)
+      .then(function(response){
+        var response = response.json()
+        .then(function(json){
+        for(i=0;i<json.length;i++){
+          var row = json[i]
+          console.log(row)
+        }
+        })
+      });
+      event.stopPropagation(); 
+    });
+};
+
+// $(".trackbox").once()..on("click", ".companyid",  function () {
+//     compid = $(this).siblings("input").val();
+//     fetch(`${url}/company/queue?company_id=`+compid)
+//       .then(function(response){
+//         var response = response.json()
+//         .then(function(json){
+//           console.log(json)
+//         })
+//       });
+// });
