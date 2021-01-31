@@ -76,8 +76,8 @@ function removeq(){
     });
 } 
 //hi i copied this from test.js before deleting it. you might need to do changes coz the naming is probs different -jamie
-function validateForm() {
-  var a = document.forms["addQueue"]["companyid"].value;  
+function validateInput() {
+  var a = document.getElementsByClassName("companyidinput").value;  
   
   if (a == ""){
       alert("company id cannot be blank");
