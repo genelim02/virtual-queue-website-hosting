@@ -52,10 +52,11 @@ function add() {
     //tickbox
 
     var checklabel = document.createElement("label");
-    checklabel.innerHTML=" Hide Inactive : "
+    checklabel.innerHTML=" Show Inactive : "
 
     var check = document.createElement("input");
     check.setAttribute("type", "checkbox");
+    check.setAttribute("class", "toggle")
     check.setAttribute("id", "check"+NumOfTrackers);
     check.setAttribute("checked","");
     check.setAttribute("onclick", "showInactive(this.id)")
@@ -113,22 +114,21 @@ function getq(number){
           //putting the array into the select
           let dropdown = document.getElementById("QueueSelect"+number);
           
-          //showInactive(number);
           let options = "";
           inactiveq = [];
           for (let i = 0; i < json.length; i++) {
             const queue = json[i];
             const queueId = queue.queue_id;
             const active = queue.is_active;
-            //let option;
+            let option;
             if (active == 0){
-                inactiveq += `<option class='inactive'>` + queueId + `</option>`;
-                // option = `<option class='inactive'>` + queueId + `</option>`;
+                
+                 option = `<option class='inactive'>` + queueId + `</option>`;
             } else {
-                options += `<option>` + queueId + `</option>`;
-                // option = `<option>` + queueId + `</option>`;
+                
+                option = `<option>` + queueId + `</option>`;
             }
-            //options += option
+            options += option
           }
           dropdown.innerHTML = options;
           
@@ -142,33 +142,21 @@ function getq(number){
       }
     })      
 }
-var inactiveq = [];
-function showInactive(number){
-  let num = number.charAt(4);
-  let dropdown = document.getElementById("QueueSelect"+num);
-  let checkbox = document.getElementById("check"+num);
-  console.log(inactiveq);
-  //empty the dropbox
-  console.log(checkbox.value);
-  let val = checkbox.value;
-  //fill.
-  if(checkbox.value = "on"){
-    $(dropdown).empty(); //clear
-    let options = "";
-          inactiveq = [];
-          for (let i = 0; i < json.length; i++) {
-            const queue = json[i];
-            const queueId = queue.queue_id;
-            const active = queue.is_active;
-            if (active == 0) {
-                inactiveq += `<option class='inactive'>` + queueId + `</option>`;
-            } else {
-                options += `<option>` + queueId + `</option>`;
-            }
-            
-          }
-          dropdown.innerHTML = options;
-  }else if (val = "off"){
 
+function showInactive(id){  //now working
+  var x = document.getElementById(id).checked;
+  var option = document.getElementsByClassName("inactive");
+  
+  if(x == true){
+    console.log(true);
+    for(let i=0; i < option.length; i++){
+      option[i].style.display = "block"
+    }
+  }else{
+    console.log(false);
+    for(let i=0; i < option.length; i++){
+      option[i].style.display = "none"
+    }
   }
+
 }
