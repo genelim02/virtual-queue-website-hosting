@@ -98,8 +98,14 @@ function getq(number){
     fetch(`${url}/company/queue?company_id=`+compid)
       .then(function(response){
         var response = response.json()
-      })
+      
       .then(function(json){
+        if(json.code == "INVALID_QUERY_STRING"){
+          alert("Invalid Company ID")
+        } 
+        else if (json.length == 0){
+          alert("Unknown Company ID")
+        }
           console.log(json); //this is working normally
           //putting the array into the select
           let dropdown = document.getElementById("QueueSelect"+number);
@@ -117,10 +123,7 @@ function getq(number){
           }
           dropdown.innerHTML = options;
       })
-      .catch(function(error){ //here
-        
-      });
-      
+    })      
 }
 
 
