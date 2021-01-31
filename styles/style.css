@@ -51,3 +51,9 @@
 .QueueSelect{
     width: 150px;
 }
+.inactive{
+    user-select: none;
+    color: grey;
+    background-color: lightgray;
+    /* visibility: hidden; */
+}
