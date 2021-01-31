@@ -11,11 +11,19 @@ function add() {
     var companyid = document.createElement("label");
     companyid.innerHTML="CompanyID : "
     companyid.setAttribute("class","companyid");
+    companyid.setAttribute("for","companyidinput");
 
+    var form = document.createElement("form");
+    form.setAttribute("id","form"+NumOfTrackers);
+    form.setAttribute("class","form");
+    
     var input = document.createElement("input");
     input.setAttribute("type", "text");
+    input.setAttribute("pattern", "^\d{10}$");
     input.setAttribute("class", "companyidinput");
-    input.setAttribute("id", "companyid"+NumOfTrackers)
+    input.setAttribute("name","companyidinput");
+    input.setAttribute("id", "companyid"+NumOfTrackers);
+    input.setAttribute("required","");
 
     // X to close
     var x = document.createElement("input");
@@ -31,9 +39,6 @@ function add() {
     search.setAttribute("Class","companyidbutton");
     search.setAttribute("id", NumOfTrackers);
     search.setAttribute("onclick","getq(this.id)");
-
-    //line break idk
-    var linebreak = document.createElement("br");
 
     var queueid = document.createElement("span");
     queueid.innerHTML="QueueID : "
@@ -54,12 +59,12 @@ function add() {
 
     // document.getElementById("addtracker").insertBefore( div, addbutton);
     addbutton.parentNode.insertBefore(div, addbutton);
-    const tracker = document.getElementById("trackbox"+NumOfTrackers)
+    const tracker = document.getElementById("trackbox"+NumOfTrackers);
     tracker.appendChild(x);
-    tracker.appendChild(companyid);
-    tracker.appendChild(input);
-    tracker.appendChild(search);
-    tracker.appendChild(linebreak);
+    tracker.appendChild(form);
+    form.appendChild(companyid);
+    form.appendChild(input);
+    form.appendChild(search);
     tracker.appendChild(queueid);
     tracker.appendChild(select);
     tracker.appendChild(checklabel);
@@ -93,7 +98,8 @@ function getq(number){
     fetch(`${url}/company/queue?company_id=`+compid)
       .then(function(response){
         var response = response.json()
-        .then(function(json){
+      })
+      .then(function(json){
           console.log(json); //this is working normally
           //putting the array into the select
           let dropdown = document.getElementById("QueueSelect"+number);
@@ -110,8 +116,11 @@ function getq(number){
             options += option;
           }
           dropdown.innerHTML = options;
-        });
+      })
+      .catch(function(error){ //here
+        
       });
+      
 }
 
 
