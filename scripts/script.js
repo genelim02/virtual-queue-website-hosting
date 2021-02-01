@@ -56,6 +56,10 @@ function add() {
 
     var check = document.createElement("input");
     check.setAttribute("type", "checkbox");
+    check.setAttribute("class", "toggle")
+    check.setAttribute("id", "check"+NumOfTrackers);
+    check.setAttribute("checked","");
+    check.setAttribute("onclick", "showInactive(this.id)")
 
     // document.getElementById("addtracker").insertBefore( div, addbutton);
     addbutton.parentNode.insertBefore(div, addbutton);
@@ -109,20 +113,27 @@ function getq(number){
           console.log(json); //this is working normally
           //putting the array into the select
           let dropdown = document.getElementById("QueueSelect"+number);
+          
           let options = "";
+          inactiveq = [];
           for (let i = 0; i < json.length; i++) {
             const queue = json[i];
             const queueId = queue.queue_id;
             const active = queue.is_active;
-            if (active == 0) {
-                option = `<option class='inactive'>` + queueId + `</option>`;
+            let option;
+            if (active == 0){
+                
+                 option = `<option class='inactive'>` + queueId + `</option>`;
             } else {
+                
                 option = `<option>` + queueId + `</option>`;
             }
-            options += option;
+            options += option
           }
           dropdown.innerHTML = options;
+          
       })
+<<<<<<< HEAD
     })
     // addGraph()      
 }
@@ -155,31 +166,32 @@ var lineChart = new Chart (ctx, {
 //     options: options
 //   });
 // }
+=======
+      
+    })
+    .catch(function(error){
+      console.log(error)
+      if (error = "TypeError: Failed to fetch"){
+        alert("Backend Connection not Established.");
+      }
+    })      
+}
 
-// hi i copied this over from test.js before deleting it made no changes. - jamie
-// function showInactive () {
-//   // Get the checkbox
-//   var checkBox = document.getElementById("hide");
-//   if (checkBox.checked == true) {
-//     $(document).ready(function () {
-//       $('#bt').click(function () {
+function showInactive(id){  //now working
+  var x = document.getElementById(id).checked;
+  var option = document.getElementsByClassName("inactive");
+  
+  if(x == true){
+    console.log(true);
+    for(let i=0; i < option.length; i++){
+      option[i].style.display = "block"
+    }
+  }else{
+    console.log(false);
+    for(let i=0; i < option.length; i++){
+      option[i].style.display = "none"
+    }
+  }
+>>>>>>> e267f8e09c55031e483f34490a868b0c329b8c75
 
-//           $.getJSON(url, function (data) {
-//               $.each(data, function (index, value) {
-//                   if (is_active == 1) {
-//                     $('#sel').append('<option value="' + value.ID + '">' + value.Name + '</option>');
-//                   }else {
-//                     display = "none";
-//                   }
-                  
-//               });
-//           });
-//       });
-
-//       // SHOW SELECTED VALUE.
-//       $('#sel').change(function () {
-//           $('#msg').text('Selected Item: ' + this.options[this.selectedIndex].text);
-//       });
-//   });
-//   }
-// }
+}
