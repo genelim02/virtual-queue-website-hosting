@@ -133,40 +133,6 @@ function getq(number){
           dropdown.innerHTML = options;
           
       })
-<<<<<<< HEAD
-    })
-    // addGraph()      
-}
-
-var ctx = document.getElementById("line-chart");
-var lineChart = new Chart (ctx, {
-  type: 'line',
-  data: {
-    labels: ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
-    datasets: [{
-      label: "2015",
-      data: [10,8,6,5,12,8,16,17,6,7,6,10]
-    }]
-}
-})
-// new Chart(ctx).Line(data);
-// var lineChart = new Chart(ctx, {
-//   type: 'line',
-//   data: {
-//     labels: ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
-//     datasets: [""]
-//   },
-//   options
-// });
-
-// function addGraph(){
-//   var myLineChart = new Chart(ctx, {
-//     type: 'line',
-//     data: data,
-//     options: options
-//   });
-// }
-=======
       
     })
     .catch(function(error){
@@ -192,6 +158,38 @@ function showInactive(id){  //now working
       option[i].style.display = "none"
     }
   }
->>>>>>> e267f8e09c55031e483f34490a868b0c329b8c75
 
 }
+
+// })
+// // addGraph()      
+// }
+
+// var ctx = document.getElementById("line-chart");
+// var lineChart = new Chart (ctx, {
+// type: 'line',
+// data: {
+// labels: ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+// datasets: [{
+//   label: "2015",
+//   data: [10,8,6,5,12,8,16,17,6,7,6,10]
+// }]
+// }
+// })
+// new Chart(ctx).Line(data);
+// var lineChart = new Chart(ctx, {
+//   type: 'line',
+//   data: {
+//     labels: ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+//     datasets: [""]
+//   },
+//   options
+// });
+
+// function addGraph(){
+//   var myLineChart = new Chart(ctx, {
+//     type: 'line',
+//     data: data,
+//     options: options
+//   });
+// }
