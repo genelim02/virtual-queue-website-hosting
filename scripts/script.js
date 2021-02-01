@@ -105,10 +105,10 @@ function getq(number){
       
       .then(function(json){
         if(json.code == "INVALID_QUERY_STRING"){
-          alert("Invalid Company ID")
+          alert("Invalid Company ID Format")
         } 
         else if (json.length == 0){
-          alert("Unknown Company ID")
+          alert("Company ID Does Not Exist")
         }
           console.log(json); //this is working normally
           //putting the array into the select
