@@ -123,9 +123,38 @@ function getq(number){
           }
           dropdown.innerHTML = options;
       })
-    })      
+    })
+    // addGraph()      
 }
 
+var ctx = document.getElementById("line-chart");
+var lineChart = new Chart (ctx, {
+  type: 'line',
+  data: {
+    labels: ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+    datasets: [{
+      label: "2015",
+      data: [10,8,6,5,12,8,16,17,6,7,6,10]
+    }]
+}
+})
+// new Chart(ctx).Line(data);
+// var lineChart = new Chart(ctx, {
+//   type: 'line',
+//   data: {
+//     labels: ["jan","feb","mar","apr","may","jun","jul","aug","sep","oct","nov","dec"],
+//     datasets: [""]
+//   },
+//   options
+// });
+
+// function addGraph(){
+//   var myLineChart = new Chart(ctx, {
+//     type: 'line',
+//     data: data,
+//     options: options
+//   });
+// }
 
 // hi i copied this over from test.js before deleting it made no changes. - jamie
 // function showInactive () {
