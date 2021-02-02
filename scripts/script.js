@@ -174,6 +174,11 @@ function getArrivalRate(id) {
   const duration = 3;
   const from = dayjs().subtract(duration, "minute").format();
   const queue = document.getElementById(id);
+  let a = id;
+  let chartid = "chart"+a.substring(11);
+  //console.log(chartid);
+  //const chart = document.getElementById("chart"+chartid);
+  //console.log(chart);
   //console.log(queue);
   var queueid = queue.options[queue.selectedIndex].innerHTML;
   //console.log(queueid);
@@ -184,36 +189,39 @@ function getArrivalRate(id) {
       return response.json();
     })
     .then(function (json) {
-      console.log(json);
+      //console.log(json);
+      const arr = convertDataArray(json);
+      drawBasic(arr);
+      console.log(chartid)
     });
-
 }
 
-window.onload = function(){
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  }
+
+// window.onload = function(){
+//   google.charts.load('current', {'packages':['corechart']});
+//   google.charts.setOnLoadCallback(drawChart);
+//   }
 
 
-function drawChart() {
-  var data = google.visualization.arrayToDataTable([
-    ['Year', 'Sales', 'Expenses'],
-    ['2004',  1000,      400],
-    ['2005',  1170,      460],
-    ['2006',  660,       1120],
-    ['2007',  1030,      540]
-  ]);
+// function drawChart() {
+//   var data = google.visualization.arrayToDataTable([
+//     ['Year', 'Sales', 'Expenses'],
+//     ['2004',  1000,      400],
+//     ['2005',  1170,      460],
+//     ['2006',  660,       1120],
+//     ['2007',  1030,      540]
+//   ]);
 
-  var options = {
-    title: 'Company Performance',
-    curveType: 'function',
-    legend: { position: 'bottom' }
-  };
+//   var options = {
+//     title: 'Company Performance',
+//     curveType: 'function',
+//     legend: { position: 'bottom' }
+//   };
 
-  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+//   var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
 
-  chart.draw(data, options);
-}
+//   chart.draw(data, options);
+// }
 
 // })
 // // addGraph()      
