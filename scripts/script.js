@@ -144,9 +144,6 @@ function getq(number){
       })
       
     })
-    .then(function(result){
-      getArrivalRate()
-    })
     .catch(function(error){
       console.log(error)
       if (error = "TypeError: Failed to fetch"){
