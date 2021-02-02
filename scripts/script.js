@@ -182,7 +182,13 @@ function getArrivalRate(id) {
   let a = id;
   let chartid = "chart"+a.substring(11);
   let loading = document.getElementById("loading"+a.substring(11));
-  loading.style.visibility = "visible";
+  if(loading === null){
+    //console.log('stop');
+    return
+  }else{
+    loading.style.visibility = "visible";
+  }
+  
   //console.log(chartid);
   //const chart = document.getElementById("chart"+chartid);
   //console.log(chart);
@@ -207,6 +213,8 @@ function getArrivalRate(id) {
         createChart(result, chartid);
         loading.style.visibility = "hidden";
 
+    }).catch(function(){
+      return
     });
 }
 
