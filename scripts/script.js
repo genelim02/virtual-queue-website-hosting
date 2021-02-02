@@ -89,18 +89,10 @@ function add() {
 function removeq(){
     $("#addtracker").on("click", ".x",  function () {
       $(this).closest('div').remove();
-      //console.log('x is pressed')
     });
 } 
 //hi i copied this from test.js before deleting it. you might need to do changes coz the naming is probs different -jamie
-function validateInput() {
-  var a = document.getElementsByClassName("companyidinput").value;  
-  
-  if (a == ""){
-      alert("company id cannot be blank");
-      return false
-  }
-}
+
 
 const url = "http://localhost:8080";
 function getq(number){
@@ -146,6 +138,9 @@ function getq(number){
       })
       
     })
+    .then(function(result){
+      getArrivalRate()
+    })
     .catch(function(error){
       console.log(error)
       if (error = "TypeError: Failed to fetch"){
@@ -169,30 +164,26 @@ function showInactive(id){  //now working
       option[i].style.display = "none"
     }
   }
-
 }
 
 
 function getArrivalRate() {
-  displayLoading();
-  const duration = 1;
-  const from = dayjs().subtract(duration, "minute").format();
-  const input = document.getElementById("queueIdSelect").value;
+}
+
+function getArrivalRateOfQueueId(queueId) {
   const url =
-    "http://localhost:8080/company/arrival_rate?queue_id=" +
-    input +
-    "&from=" +
-    encodeURIComponent(from) +
-    "&duration=" +
-    duration;
+  "http://localhost:8080/company/arrival_rate?queue_id=" +
+  input + "&from=" +
+  encodeURIComponent(from) +
+  "&duration=" +
+  duration;
   return fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (json) {
-      hideLoading();
-      console.log(json);
-    });
+  .then(function (response) {
+    return response.json();
+})
+.then(function (json) {
+    console.log(json);
+})
 }
 
 window.onload = function(){
