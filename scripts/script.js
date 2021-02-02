@@ -69,6 +69,10 @@ function add() {
     loading.setAttribute("class", "loading");
     loading.setAttribute("id","loading"+NumOfTrackers);
 
+    //chart
+    var chart = document.createElement("div");
+    chart.setAttribute("id","chart"+NumOfTrackers);
+
     // document.getElementById("addtracker").insertBefore( div, addbutton);
     addbutton.parentNode.insertBefore(div, addbutton);
     const tracker = document.getElementById("trackbox"+NumOfTrackers);
@@ -82,6 +86,7 @@ function add() {
     tracker.appendChild(select);
     tracker.appendChild(checklabel);
     tracker.appendChild(check);
+    tracker.appendChild(chart);
 
     NumOfTrackers++;
 
@@ -178,10 +183,9 @@ function getArrivalRate(id) {
   const duration = 3;
   const from = dayjs().subtract(duration, "minute").format();
   const queue = document.getElementById(id);
-  console.log(queue);
+  //console.log(queue);
   var queueid = queue.options[queue.selectedIndex].innerHTML;
-  
-  console.log(queueid);
+  //console.log(queueid);
   const url =
     "http://localhost:8080/company/arrival_rate?queue_id=" + queueid + "&from=" + encodeURIComponent(from) +"&duration=" + duration;
   return fetch(url)
@@ -189,7 +193,6 @@ function getArrivalRate(id) {
       return response.json();
     })
     .then(function (json) {
-     
       console.log(json);
     });
 }
