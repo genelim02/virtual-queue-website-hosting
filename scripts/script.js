@@ -61,6 +61,11 @@ function add() {
     check.setAttribute("checked","");
     check.setAttribute("onclick", "showInactive(this.id)")
 
+    //loading animation
+    var loading = document.createElement("div");
+    loading.setAttribute("class", "loading");
+    loading.setAttribute("id","loading"+NumOfTrackers);
+
     // document.getElementById("addtracker").insertBefore( div, addbutton);
     addbutton.parentNode.insertBefore(div, addbutton);
     const tracker = document.getElementById("trackbox"+NumOfTrackers);
@@ -69,6 +74,7 @@ function add() {
     form.appendChild(companyid);
     form.appendChild(input);
     form.appendChild(search);
+    form.appendChild(loading);
     tracker.appendChild(queueid);
     tracker.appendChild(select);
     tracker.appendChild(checklabel);
@@ -159,4 +165,35 @@ function showInactive(id){  //now working
     }
   }
 
+}
+
+function showLoading() {
+  const load = document.getElementById("loading");
+  load.classList.add("display");
+}
+function hideLoading() {
+  const load = document.getElementById("loading");
+  load.classList.remove("display");
+}
+
+function getArrivalRate() {
+  displayLoading();
+  const duration = 1;
+  const from = dayjs().subtract(duration, "minute").format();
+  const input = document.getElementById("queueIdSelect").value;
+  const url =
+    "http://localhost:8080/company/arrival_rate?queue_id=" +
+    input +
+    "&from=" +
+    encodeURIComponent(from) +
+    "&duration=" +
+    duration;
+  return fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+      hideLoading();
+      console.log(json);
+    });
 }
