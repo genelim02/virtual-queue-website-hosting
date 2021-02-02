@@ -52,7 +52,7 @@ function add() {
     var select = document.createElement("select");
     select.setAttribute("class", "QueueSelect");
     select.setAttribute("id","QueueSelect"+NumOfTrackers);
-    select.setAttribute("onchange","getArrivalRate(this.id)");
+    select.setAttribute("onchange","setInterval(getArrivalRate,3000,this.id)");
 
     //tickbox
 
@@ -177,11 +177,14 @@ const arrivalRateData = {
 }
 
 function getArrivalRate(id) {
+
   const duration = 3;
   const from = dayjs().subtract(duration, "minute").format();
   const queue = document.getElementById(id);
   let a = id;
   let chartid = "chart"+a.substring(11);
+  let loading = document.getElementById("loading"+a.substring(11));
+  loading.style.visibility = "visible";
   //console.log(chartid);
   //const chart = document.getElementById("chart"+chartid);
   //console.log(chart);
@@ -198,18 +201,24 @@ function getArrivalRate(id) {
       const result = []
       for (let i = 0; i < json.length; i++) {
         results = [json[i].timestamp, parseInt(json[i].count)]
-        const convertedData = results
-        result.push(convertedData)
+        const convertedData = results;
+        result.push(convertedData);
       }
-      createChart(result,chartid)
+      //clearInterval(test);
+      
+        createChart(result, chartid);
+        loading.style.visibility = "hidden";
+  
     });
 }
 
 function createChart(results,chartid) {
+  //let loading = document.getElementById("loading"+chartid.substring(6));
+  //loading.style.visibility = "visible";
   var data = new google.visualization.DataTable();
   data.addColumn('number', '');
   data.addColumn('number', '');
-  data.addRows(results)
+  data.addRows(results);
   var options = {
       hAxis: {
           title: 'Time'
@@ -220,14 +229,15 @@ function createChart(results,chartid) {
   };
 
   var chart = new google.visualization.LineChart(document.getElementById(chartid));
-
   chart.draw(data, options);
 }
 
-window.onload = function(){
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  }
+
+
+// window.onload = function(){
+//   google.charts.load('current', {'packages':['corechart']});
+//   google.charts.setOnLoadCallback(drawChart);
+//   }
 
 
 // window.onload = function(){
