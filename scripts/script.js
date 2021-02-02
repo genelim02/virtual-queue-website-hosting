@@ -50,6 +50,7 @@ function add() {
     var select = document.createElement("select");
     select.setAttribute("class", "QueueSelect");
     select.setAttribute("id","QueueSelect"+NumOfTrackers);
+    select.setAttribute("onchange","getArrivalRate(this.id)");
 
     //tickbox
 
@@ -167,6 +168,7 @@ function showInactive(id){  //now working
 }
 
 
+<<<<<<< HEAD
 function getArrivalRate() {
 }
 
@@ -184,6 +186,26 @@ function getArrivalRateOfQueueId(queueId) {
 .then(function (json) {
     console.log(json);
 })
+=======
+function getArrivalRate(id) {
+  const duration = 3;
+  const from = dayjs().subtract(duration, "minute").format();
+  const queue = document.getElementById(id);
+  console.log(queue);
+  var queueid = queue.options[queue.selectedIndex].innerHTML;
+  
+  console.log(queueid);
+  const url =
+    "http://localhost:8080/company/arrival_rate?queue_id=" + queueid + "&from=" + encodeURIComponent(from) +"&duration=" + duration;
+  return fetch(url)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (json) {
+     
+      console.log(json);
+    });
+>>>>>>> f35781d743511b71234d0c85f6bb8484b53fe4df
 }
 
 window.onload = function(){
