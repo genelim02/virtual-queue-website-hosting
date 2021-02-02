@@ -1,5 +1,7 @@
-// import { GoogleCharts } from require('google-charts')
-// Vue.prototype.$GoogleCharts = GoogleCharts;
+window.onload = function(){
+  google.charts.load('current', { packages: ['corechart', 'line'] });
+}
+
 let NumOfTrackers = 0;
 // let addbutton = document.getElementById('addbutton');
 //need a i=0 or smt then can + - the div when delete?
@@ -169,6 +171,10 @@ function showInactive(id){  //now working
   }
 }
 
+const arrivalRateData = {
+  timestamp: 1,
+  count: 2,
+}
 
 function getArrivalRate(id) {
   const duration = 3;
@@ -189,12 +195,39 @@ function getArrivalRate(id) {
       return response.json();
     })
     .then(function (json) {
-      //console.log(json);
-      const arr = convertDataArray(json);
-      drawBasic(arr);
-      console.log(chartid)
+      const result = []
+      for (let i = 0; i < json.length; i++) {
+        results = [json[i].timestamp, parseInt(json[i].count)]
+        const convertedData = results
+        result.push(convertedData)
+      }
+      createChart(result,chartid)
     });
 }
+
+function createChart(results,chartid) {
+  var data = new google.visualization.DataTable();
+  data.addColumn('number', '');
+  data.addColumn('number', '');
+  data.addRows(results)
+  var options = {
+      hAxis: {
+          title: 'Time'
+      },
+      vAxis: {
+          title: 'Count'
+      }
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById(chartid));
+
+  chart.draw(data, options);
+}
+
+window.onload = function(){
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+  }
 
 
 // window.onload = function(){
