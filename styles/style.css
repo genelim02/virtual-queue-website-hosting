@@ -62,18 +62,18 @@
     /* display: none; */
 }
 
-#loading {
-    position: relative;
-    /* width: ?;
-    height: ?; */
-    border-radius: 100%;
+.loading {
+    position: absolute;
+    top: 10;
+    right: 30;
+    border: 5px solid #f3f3f3;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border-top: 5px solid #3498db;
     margin: auto;
     visibility: hidden;
-    animation: spin 1s infinite linear;
-  }
-  
-  #loading.display {
-    visibility: visible;
+    animation: spin 0.5s infinite linear;
   }
   
   @keyframes spin {

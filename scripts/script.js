@@ -107,10 +107,13 @@ function getq(number){
     //console.log(number);
     let compid = document.getElementById("companyid"+number).value;
     //console.log(compid);
+    let load = document.getElementById("loading"+number);
+    load.style.visibility = "visible";
+    
     fetch(`${url}/company/queue?company_id=`+compid)
       .then(function(response){
         var response = response.json()
-      
+        //hideLoading(number)
       .then(function(json){
         if(json.code == "INVALID_QUERY_STRING"){
           alert("Invalid Company ID Format")
@@ -139,7 +142,7 @@ function getq(number){
             options += option
           }
           dropdown.innerHTML = options;
-          
+          load.style.visibility = "hidden";
       })
       
     })
@@ -169,15 +172,6 @@ function showInactive(id){  //now working
 
 }
 
-
-function showLoading() {
-  const load = document.getElementById("loading");
-  load.classList.add("display");
-}
-function hideLoading() {
-  const load = document.getElementById("loading");
-  load.classList.remove("display");
-}
 
 function getArrivalRate() {
   displayLoading();
