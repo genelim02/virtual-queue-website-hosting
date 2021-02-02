@@ -64,8 +64,8 @@
 
 .loading {
     position: absolute;
-    top: 250;
-    right: 250;
+    top: 15;
+    right: 30;
     border: 5px solid #f3f3f3;
     width: 20px;
     height: 20px;
