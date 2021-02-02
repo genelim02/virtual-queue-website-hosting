@@ -95,18 +95,10 @@ function add() {
 function removeq(){
     $("#addtracker").on("click", ".x",  function () {
       $(this).closest('div').remove();
-      //console.log('x is pressed')
     });
 } 
 //hi i copied this from test.js before deleting it. you might need to do changes coz the naming is probs different -jamie
-function validateInput() {
-  var a = document.getElementsByClassName("companyidinput").value;  
-  
-  if (a == ""){
-      alert("company id cannot be blank");
-      return false
-  }
-}
+
 
 const url = "http://localhost:8080";
 function getq(number){
@@ -152,6 +144,9 @@ function getq(number){
       })
       
     })
+    .then(function(result){
+      getArrivalRate()
+    })
     .catch(function(error){
       console.log(error)
       if (error = "TypeError: Failed to fetch"){
@@ -175,10 +170,28 @@ function showInactive(id){  //now working
       option[i].style.display = "none"
     }
   }
-
 }
 
 
+<<<<<<< HEAD
+function getArrivalRate() {
+}
+
+function getArrivalRateOfQueueId(queueId) {
+  const url =
+  "http://localhost:8080/company/arrival_rate?queue_id=" +
+  input + "&from=" +
+  encodeURIComponent(from) +
+  "&duration=" +
+  duration;
+  return fetch(url)
+  .then(function (response) {
+    return response.json();
+})
+.then(function (json) {
+    console.log(json);
+})
+=======
 function getArrivalRate(id) {
   const duration = 3;
   const from = dayjs().subtract(duration, "minute").format();
@@ -195,6 +208,7 @@ function getArrivalRate(id) {
     .then(function (json) {
       console.log(json);
     });
+>>>>>>> f35781d743511b71234d0c85f6bb8484b53fe4df
 }
 
 window.onload = function(){
