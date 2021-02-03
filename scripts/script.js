@@ -224,10 +224,10 @@ function createChart(results,chartid) {
   chart.draw(data, options);
 }
 
-window.onload = function(){
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-  }
+// window.onload = function(){
+//   google.charts.load('current', {'packages':['corechart']});
+//   google.charts.setOnLoadCallback(drawChart);
+//   }
 
 
 // window.onload = function(){

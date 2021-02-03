@@ -37,6 +37,7 @@
 
 ## Test Case #3: View Arrival Rate Based on Queue ID
 ### Description:
+- Arrival Rate appears
 ### Pre-condition:
 ### Test Steps:
 ### Expected Results:
