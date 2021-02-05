@@ -236,8 +236,6 @@ function createChart(results,chartid) {
 
   var chart = new google.visualization.LineChart(document.getElementById(chartid));
   chart.draw(data, options);
-
-  
 }
 
 // window.onload = function(){

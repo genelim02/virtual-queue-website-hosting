@@ -14,7 +14,7 @@
 5. Click 'Search'
 6. Click the dropdown menu
 ### Expected Results:
-- All the queue ids under that company id should be there (QueueId: "QUEUE01001", "QUEUE01002", "QUEUE01003", "QUEUE01004", "QUEUE01005") where "QUEUE01004" and "QUEUE1005" should be inactive (greyed out).
+- All the queue ids under that company id should be there (QueueId: "QUEUE01001", "QUEUE01002", "QUEUE01003", "QUEUE01004", "QUEUE01005") where "QUEUE01004" and "QUEUE01005" should be inactive (greyed out).
 
 </br>
 </br> 
@@ -35,21 +35,38 @@
 </br>
 </br> 
 
-## Test Case #3: View Arrival Rate Based on Queue ID
+## Test Case #3: View Arrival Rate Based on Queue ID 'QUEUE01002' while refreshing every 3 seconds
 ### Description:
-- Arrival Rate appears
+- Arrival Rate appears in the graph for the Queue ID 'QUEUE01002' in the form of a line graph and auto-refreshes every 3 seconds
 ### Pre-condition:
+1. Backend Tester should be running - both company and customer
+2. Backend should be populated
+3. The company id has been searched
 ### Test Steps:
+1. Run double peak scenario in the backend tester
+2. Click on the queue drop down menu and click on 'QUEUE01002'
 ### Expected Results:
+- A graph should appear which auto-refreshes every 3 seconds and there will be a double-peak graph
 
 </br>
 </br> 
 
-## Test Case #4: Get multiple graphs
+## Test Case #4: View graphs 'QUEUE01002' & 'QUEUE01003' at the same time
 ### Description:
+- Able to view multiple graphs at the same time and it auto-refreshes every 3 seconds
 ### Pre-condition:
+1. Backend Tester should be running - both company and customer
+2. Backend should be populated
 ### Test Steps:
+1. Click 'Add Another'
+2. Input the company id '100000001' 
+3. Click 'Search'
+4. Run double peak in the backend tester
+5. Click on the drop down menu and select 'QUEUE01002'
+6. Repeat steps 1 to 4
+7. Click on the drop down menu and select 'QUEUE01003'
 ### Expected Results:
+- Both graphs should be shown and both will auto-refresh every 3 seconds 
 
 </br>
 </br>
