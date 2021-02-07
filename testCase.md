@@ -105,10 +105,3 @@
 5. Click 'Search'
 ### Expected Results:
 - An alert should pop up saying "Company ID Does Not Exist"
-
-
-## Test Case #: 
-### Description:
-### Pre-condition:
-### Test Steps:
-### Expected Results:
