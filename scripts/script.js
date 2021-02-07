@@ -52,10 +52,9 @@ function add() {
     var select = document.createElement("select");
     select.setAttribute("class", "QueueSelect");
     select.setAttribute("id","QueueSelect"+NumOfTrackers);
-    select.setAttribute("onchange","setInterval(getArrivalRate,3000,this.id)");
+    select.setAttribute("onchange","startInterval(this.id)");
 
     //tickbox
-
     var checklabel = document.createElement("label");
     checklabel.innerHTML=" Show Inactive : "
 
@@ -94,9 +93,19 @@ function add() {
 
 }
 
+// start interval function
+const trackings = {}
+    function  startInterval (id) { 
+      clearInterval(trackings[id])
+      var interval = setInterval(getArrivalRate,3000,id)
+      trackings[id] = interval; 
+ }
+
+// x button to remove queue
 function removeq(){
     $("#addtracker").on("click", ".x",  function () {
       $(this).closest('div').remove();
+      clearInterval (interval) 
     });
 } 
 
@@ -152,7 +161,8 @@ function getq(number){
     })      
 }
 
-function showInactive(id){  //now working
+// Show Inactive for checkbox
+function showInactive(id){  
   var x = document.getElementById(id).checked;
   var option = document.getElementsByClassName("inactive");
   
@@ -181,6 +191,7 @@ function getArrivalRate(id) {
   const queue = document.getElementById(id);
   let a = id;
   let chartid = "chart"+a.substring(11);
+  
   let loading = document.getElementById("loading"+a.substring(11));
   if(loading === null){
     //console.log('stop');
@@ -221,13 +232,15 @@ function getArrivalRate(id) {
 function createChart(results,chartid) {
   //let loading = document.getElementById("loading"+chartid.substring(6));
   //loading.style.visibility = "visible";
+
   var data = new google.visualization.DataTable();
+
   data.addColumn('number', '');
   data.addColumn('number', '');
   data.addRows(results);
   var options = {
       hAxis: {
-          title: 'Time'
+          title: 'Time',
       },
       vAxis: {
           title: 'Count'
@@ -243,7 +256,7 @@ function createChart(results,chartid) {
 
 window.onload = function(){
   google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
+  google.charts.setOnLoadCallback(createChart);
   }
 
 
