@@ -109,7 +109,7 @@ function removeq(){
     });
 } 
 
-const url = "http://localhost:8080";
+const url = "https://ades-2b03.herokuapp.com/";
 function getq(number){
     //console.log(number);
     let compid = document.getElementById("companyid"+number).value;
@@ -207,7 +207,7 @@ function getArrivalRate(id) {
   var queueid = queue.options[queue.selectedIndex].innerHTML;
   //console.log(queueid);
   const url =
-    "http://localhost:8080/company/arrival_rate?queue_id=" + queueid + "&from=" + encodeURIComponent(from) +"&duration=" + duration;
+    "https://ades-2b03.herokuapp.com/company/arrival_rate?queue_id=" + queueid + "&from=" + encodeURIComponent(from) +"&duration=" + duration;
   return fetch(url)
     .then(function (response) {
       return response.json();
