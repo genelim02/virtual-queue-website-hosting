@@ -109,7 +109,7 @@ function removeq(){
     });
 } 
 
-const url = "https://ades-2b03.herokuapp.com/";
+const url = "https://ades-2b03.herokuapp.com";
 function getq(number){
     //console.log(number);
     let compid = document.getElementById("companyid"+number).value;
